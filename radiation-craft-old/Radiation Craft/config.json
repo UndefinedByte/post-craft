@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "debug_mode": false,
+  "show_resource_errors": true,
+  "rc_settings":{
+    "hardcore": false,
+    "zombie_disease": false,
+    "radiation": true,
+    "ruins_gen": false,
+    "animations":true,
+    "explode_time": 600
+  },
+  "ore_gen":{
+    "tin_ore": true,
+    "uranium_ore": true,
+    "copper_ore": true,
+    "lead_ore": true,
+    "sulfur_ore": true
+  }
+}
