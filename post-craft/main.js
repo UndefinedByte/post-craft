@@ -2,7 +2,7 @@
 BUILD INFO:
   dir: dev
   target: main.js
-  files: 41
+  files: 43
 */
 
 
@@ -425,7 +425,7 @@ function getLiquidFromStorages(liquid, input, output){
 
 IDRegistry.genBlockID("dirt"); 
 Block.createBlock("dirt", [
-    {name: "Dirt", texture: [["dirt",0]], inCreative: false}
+    {name: "Dirt", texture: [["false_dirt",0]], inCreative: false}
 ], "opaque");
 	
 Block.setDestroyTime(BlockID.dirt, 3);
@@ -645,10 +645,42 @@ Item.registerUseFunction("oxygenePipe0", function(coords, item, block){
 
 
 
+// file: items/misc/backpacks.js
+
+IDRegistry.genItemID("leatherBound");
+IDRegistry.genItemID("leatherTanned");
+
+Item.createItem("leatherBound", "Bound Leather", { name: "leather_bound", data: 0 },{ stack: 64 });
+Item.createItem("leatherTanned", "Tanned Leather", { name: "leather_tanned", data: 0 },{ stack: 64 });
+
+
+IDRegistry.genItemID("backpack"); //27 slots
+Item.createItem("backpack", "Backpack", { name: "backpack_small", data: 0 },{ stack: 64 });
+
+IDRegistry.genItemID("bigBackpack"); //54 slots
+Item.createItem("bigBackpack", "Big Backpack", { name: "backpack_big", data: 0 },{ stack: 64 });
+
+
+
+Callback.addCallback("PostLoaded", function(){
+	Recipes.addShaped({id: ItemID.leatherBound, count: 1, data: 0}, ["ooo","sos","ooo"], ['o', 287, 0, 's', 334, 0]);
+	Recipes.addFurnace(ItemID.leatherBound, ItemID.leatherTanned, 0);
+	
+	Recipes.addShaped({id: ItemID.backpack, count: 1, data: 0}, ["ooo","o o","ooo"], ['o', 334, 0]);
+	Recipes.addShaped({id: ItemID.bigBackpack, count: 1, data: 0}, ["ooo","o o","ooo"], ['o', ItemID.leatherTanned, 0]);
+});
+
+
+
+
 // file: items/misc/cardboard.js
 
 ﻿IDRegistry.genItemID("cardboard");
 Item.createItem("cardboard", "Cardboard", { name: "cardboard", data: 0 },{ stack: 64 });
+
+Callback.addCallback("PostLoaded", function(){
+	Recipes.addShaped({id: ItemID.cardboard, count: 1, data: 0}, ["  ","ooo","   "], ['o', 339, 0]);
+});
 
 
 
@@ -661,7 +693,7 @@ Item.createItem("guidebook", "Guide Book", {name: "guide_book", data: 0},{stack:
 
 
 
-// file: items/resource/ingots.js
+// file: items/res/ingots.js
 
 IDRegistry.genItemID("ingotCopper");
 IDRegistry.genItemID("ingotLead");
@@ -672,7 +704,7 @@ Item.createItem("ingotLead", "Lead Ingot", {name: "ingot_lead", data: 0});
 
 
 
-// file: items/resource/ore_drops.js
+// file: items/res/ore_drops.js
 
 ﻿IDRegistry.genItemID("uranium");
 IDRegistry.genItemID("radonium");
@@ -683,7 +715,7 @@ Item.createItem("radonium", "Radonium", {name: "radonium"});
 
 
 
-// file: items/resource/plates.js
+// file: items/res/plates.js
 
 ﻿IDRegistry.genItemID("plateCopper");
 IDRegistry.genItemID("plateIron");
@@ -696,7 +728,7 @@ Item.createItem("plateLead", "Lead Plate", {name: "plate_lead", data: 0});
 
 
 
-// file: items/resource/rubber.js
+// file: items/res/rubber.js
 
 IDRegistry.genItemID("latex");
 IDRegistry.genItemID("rubber");
@@ -1057,7 +1089,7 @@ Block.setDestroyTime(BlockID.elevator, 3);
 
 Callback.addCallback("ItemUse", function(coords, item, block){
 
-	for(var i = 1; i <= 6; i++){
+	for(var i = 1; i <= 20; i++){
 		if(block.id == BlockID.elevator && World.getBlockID(coords.x, coords.y + i, coords.z) == BlockID.elevator && Entity.getSneaking(Player.get()) == false){
 			Player.setPosition (coords.x + 0.5, coords.y + i + 2, coords.z + 0.5); 
 			break;
@@ -1071,6 +1103,42 @@ Callback.addCallback("ItemUse", function(coords, item, block){
 		}
 	}
 });
+
+Callback.addCallback("PreLoaded", function(){
+	Recipes.addShaped({id: BlockID.elevator, count: 1, data: 0}, ["xxx","xox","xxx"], ['x', 35, -1, 'o', 368, 0]);
+});
+
+
+
+
+// file: block/fluid.js
+
+var BLOCK_TYPE_LIQUID = Block.createSpecialType({
+    //base: 90,
+    rendertype: 0,
+    renderlayer: 1,
+    explosionres: 9999
+});
+
+IDRegistry.genBlockID("oil"); 
+Block.createBlock("oil", [
+	{name: "Oil", texture: [["oil_still", 0]], inCreative: true}
+, BLOCK_TYPE_LIQUID]);
+
+Block.setBlockShape(BlockID.oil, {x: 0, y: 0, z: 0}, {x: 1, y: 14/16, z: 1});
+
+IDRegistry.genItemID("oilBucket");
+Item.createItem("oilBucket", "Oil Bucket", { name: "bucket_oil", data: 0 },{ stack: 1 });
+
+
+
+
+IDRegistry.genBlockID("fluidStill"); 
+Block.createBlock("fluidStill", [
+	{name: "block.fluid.name", texture: [["fluid_still", 0]], inCreative: true}
+, BLOCK_TYPE_LIQUID]);
+
+Block.setBlockShape(BlockID.fluidStill, {x: 0, y: 0, z: 0}, {x: 1, y: 14/16, z: 1});
 
 
 
@@ -1363,6 +1431,24 @@ Block.setDestroyTime(BlockID.blockCopper, 5);
 Block.setDestroyLevel("blockCopper", 2);
 
 
+IDRegistry.genBlockID("blockTin");
+Block.createBlock("blockTin", [
+	{name: "Tin Block", texture: [["block_tin", 0]], inCreative: true}
+], "opaque");
+ToolAPI.registerBlockMaterial(BlockID.blockTin, "stone", 2, true);
+Block.setDestroyTime(BlockID.blockTin, 5);
+Block.setDestroyLevel("blockTin", 2);
+
+
+IDRegistry.genBlockID("blockBronze");
+Block.createBlock("blockBronze", [
+	{name: "Bronze Block", texture: [["block_bronze", 0]], inCreative: true}
+], "opaque");
+ToolAPI.registerBlockMaterial(BlockID.blockBronze, "stone", 2, true);
+Block.setDestroyTime(BlockID.blockBronze, 5);
+Block.setDestroyLevel("blockBronze", 2);
+
+
 IDRegistry.genBlockID("blockLead");
 Block.createBlock("blockLead", [
 	{name: "Lead Block", texture: [["block_lead", 0]], inCreative: true}
@@ -1403,6 +1489,16 @@ Block.setDestroyTime(BlockID.oreCopper, 3);
 Block.setDestroyLevel("oreCopper", 2);
 
 
+
+IDRegistry.genBlockID("oreTin");
+Block.createBlock("oreTin", [
+	{name: "Tin Ore", texture: [["ore_tin", 0]], inCreative: true}
+], "opaque");
+ToolAPI.registerBlockMaterial(BlockID.oreTin, "stone", 2, true);
+Block.setDestroyTime(BlockID.oreTin, 3);
+Block.setDestroyLevel("oreTin", 2);
+
+
 IDRegistry.genBlockID("oreLead");
 Block.createBlock("oreLead", [
 	{name: "Lead Ore", texture: [["ore_lead", 0]], inCreative: true}
@@ -1410,15 +1506,6 @@ Block.createBlock("oreLead", [
 ToolAPI.registerBlockMaterial(BlockID.oreLead, "stone", 2, true);
 Block.setDestroyTime(BlockID.oreLead, 3);
 Block.setDestroyLevel("oreLead", 2);
-
-
-IDRegistry.genBlockID("oreRadonium");
-Block.createBlock("oreRadonium", [
-	{name: "Radonium Ore", texture: [["ore_radonium", 0]], inCreative: true}
-], "opaque");
-ToolAPI.registerBlockMaterial(BlockID.oreRadonium, "stone", 2, true);
-Block.setDestroyTime(BlockID.oreRadonium, 3);
-Block.setDestroyLevel("oreRadonium", 2);
 
 
 IDRegistry.genBlockID("oreUranium");

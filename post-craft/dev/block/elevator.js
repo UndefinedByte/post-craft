@@ -9,7 +9,7 @@ Block.setDestroyTime(BlockID.elevator, 3);
 
 Callback.addCallback("ItemUse", function(coords, item, block){
 
-	for(var i = 1; i <= 6; i++){
+	for(var i = 1; i <= 20; i++){
 		if(block.id == BlockID.elevator && World.getBlockID(coords.x, coords.y + i, coords.z) == BlockID.elevator && Entity.getSneaking(Player.get()) == false){
 			Player.setPosition (coords.x + 0.5, coords.y + i + 2, coords.z + 0.5); 
 			break;
@@ -22,4 +22,8 @@ Callback.addCallback("ItemUse", function(coords, item, block){
 			//Game.message('down');
 		}
 	}
+});
+
+Callback.addCallback("PreLoaded", function(){
+	Recipes.addShaped({id: BlockID.elevator, count: 1, data: 0}, ["xxx","xox","xxx"], ['x', 35, -1, 'o', 368, 0]);
 });

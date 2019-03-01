@@ -7,13 +7,14 @@ other/radWasteland.js
 
 items/energy/cable.js
 
+items/misc/backpacks.js
 items/misc/cardboard.js
 items/misc/guide_book.js
 
-items/resource/ingots.js
-items/resource/ore_drops.js
-items/resource/plates.js
-items/resource/rubber.js
+items/res/ingots.js
+items/res/ore_drops.js
+items/res/plates.js
+items/res/rubber.js
 
 items/tool/treetap.js
 items/tool/weapons.js
@@ -26,6 +27,7 @@ block/cable.js
 block/cardboard_box.js
 block/crate.js
 block/elevator.js
+block/fluid.js
 block/iron_coffer.js
 block/glow_lamp.js
 block/lamp.js

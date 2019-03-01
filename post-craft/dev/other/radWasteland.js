@@ -1,6 +1,6 @@
 IDRegistry.genBlockID("dirt"); 
 Block.createBlock("dirt", [
-    {name: "Dirt", texture: [["dirt",0]], inCreative: false}
+    {name: "Dirt", texture: [["false_dirt",0]], inCreative: false}
 ], "opaque");
 	
 Block.setDestroyTime(BlockID.dirt, 3);
