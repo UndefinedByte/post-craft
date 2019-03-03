@@ -24,12 +24,12 @@ var guiNuclearFurnace = new UI.StandartWindow({
 	
 	drawing: [
 		{type: "bitmap", x: 530, y: 146, bitmap: "arrow_bar_background", scale: GUI_SCALE},
-		{type: "bitmap", x: 450, y: 150, bitmap: "fire_background", scale: GUI_SCALE}
+		{type: "bitmap", x: 445, y: 150, bitmap: "fire_background", scale: GUI_SCALE}
 	],
 	
 	elements: {
 		"progressScale": {type: "scale", x: 530, y: 146, direction: 0,  bitmap: "arrow_bar_scale", scale: GUI_SCALE},
-		"burningScale": {type: "scale", x: 450, y: 150, direction: 1, bitmap: "nf_fire_scale", scale: GUI_SCALE},
+		"burningScale": {type: "scale", x: 445, y: 150, direction: 1, bitmap: "nf_fire_scale", scale: GUI_SCALE},
 		"slotSource": {type: "slot", x: 441, y: 75},
 		"slotFuel": {type: "slot", x: 441, y: 212},
 		"slotResult": {type: "slot", x: 630, y: 142},

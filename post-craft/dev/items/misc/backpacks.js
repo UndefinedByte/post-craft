@@ -6,11 +6,24 @@ Item.createItem("leatherTanned", "Tanned Leather", { name: "leather_tanned", dat
 
 
 IDRegistry.genItemID("backpack"); //27 slots
-Item.createItem("backpack", "Backpack", { name: "backpack_small", data: 0 },{ stack: 64 });
+Item.createItem("backpack", "Backpack", { name: "backpack_small", data: 0 },{ stack: 1 });
+
+BackpackRegistry.register(ItemID.backpack, {
+    slots: 27,
+    slotsCenter: true,
+    inRow: 9
+});
+
+
 
 IDRegistry.genItemID("bigBackpack"); //54 slots
-Item.createItem("bigBackpack", "Big Backpack", { name: "backpack_big", data: 0 },{ stack: 64 });
+Item.createItem("bigBackpack", "Big Backpack", { name: "backpack_big", data: 0 },{ stack: 1 });
 
+BackpackRegistry.register(ItemID.bigBackpack, {
+    slots: 54,
+    slotsCenter: true,
+    inRow: 9
+});
 
 
 Callback.addCallback("PostLoaded", function(){

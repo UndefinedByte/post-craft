@@ -1,3 +1,21 @@
+var Renderer={
+        setOilRender:function(id,x){
+        var shape = new ICRender.CollisionShape();     
+        BlockRenderer.setCustomCollisionShape(Block.getNumericId(id), -1, shape);    
+        BlockRenderer.addRenderCallback(id, function(api, coords,block) {
+            if(x != 0){
+                for(var i = 0; i < 1/x; i += x){
+                api.renderBoxId(coords.x, coords.y, coords.z,0, 0, 0, 1, 14/16, 1,id, block.data);
+                }
+            }
+            else{
+                api.renderBoxId(coords.x, coords.y, coords.z, 0, 0, 0, 1, 14/16, 1,id, block.data);
+            }
+        })
+        BlockRenderer.enableCustomRender(id);
+    }
+};
+
 var BLOCK_TYPE_LIQUID = Block.createSpecialType({
     //base: 90,
     rendertype: 0,
@@ -7,11 +25,11 @@ var BLOCK_TYPE_LIQUID = Block.createSpecialType({
 
 IDRegistry.genBlockID("oil"); 
 Block.createBlock("oil", [
-	{name: "Oil", texture: [["oil_still", 0]], inCreative: true}
+	{name: "Oil", texture: [["oil_still", 0]], inCreative:false}
 , BLOCK_TYPE_LIQUID]);
 
 Block.setBlockShape(BlockID.oil, {x: 0, y: 0, z: 0}, {x: 1, y: 14/16, z: 1});
-
+Renderer.setOilRender(BlockID.oil, 0);
 
 
 IDRegistry.genItemID("oilBucket");
@@ -19,7 +37,7 @@ Item.createItem("oilBucket", "Oil Bucket", { name: "bucket_oil", data: 0 },{ sta
 
 Callback.addCallback("ItemUse", function (coords, item, block) {
 	if(block.id == BlockID.oil && item.id == 325){
-		World.setBlock(coords.x, coords.y + 1, coords.z, 0, 0);
+		World.setBlock(coords.x, coords.y, coords.z, 0, 0);
 		Player.setCarriedItem(325, -1, 0);
 		Player.addItemToInventory(ItemID.oilBucket, 1, 0);
 	}
@@ -30,13 +48,3 @@ Callback.addCallback("ItemUse", function (coords, item, block) {
 		Player.addItemToInventory(325, 1, 0);
 	}
 });
-
-
-
-
-IDRegistry.genBlockID("fluidStill"); 
-Block.createBlock("fluidStill", [
-	{name: "block.fluid.name", texture: [["fluid_still", 0]], inCreative: true}
-, BLOCK_TYPE_LIQUID]);
-
-Block.setBlockShape(BlockID.fluidStill, {x: 0, y: 0, z: 0}, {x: 1, y: 14/16, z: 1});

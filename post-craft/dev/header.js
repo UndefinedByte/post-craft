@@ -5,6 +5,7 @@ IMPORT("energylib");
 IMPORT("ChargeItem");
 IMPORT("MachineRender");
 IMPORT("dimensions");
+IMPORT("BackpackAPI");
 
 
 var GUI_SCALE = 3.5;
@@ -23,7 +24,7 @@ var EntityType = Native.EntityType;
 var EU = EnergyTypeRegistry.assureEnergyType("Eu", 1);
 
 // vanilla items
-Recipes.addFurnaceFuel(325, 10, 2000);
+Recipes.addFurnaceFuel(339, 0, 20);
 ChargeItemRegistry.registerFlashItem(331, "Eu", 800, 0); // redstone
 
 function random(min, max){

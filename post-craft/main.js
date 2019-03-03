@@ -2,7 +2,7 @@
 BUILD INFO:
   dir: dev
   target: main.js
-  files: 43
+  files: 44
 */
 
 
@@ -655,10 +655,134 @@ Item.createItem("leatherTanned", "Tanned Leather", { name: "leather_tanned", dat
 
 
 IDRegistry.genItemID("backpack"); //27 slots
-Item.createItem("backpack", "Backpack", { name: "backpack_small", data: 0 },{ stack: 64 });
+Item.createItem("backpack", "Backpack", { name: "backpack_small", data: 0 },{ stack: 1 });
+
+var backpackContainer = new UI.Container();
+var guiBackpack = new UI.StandartWindow({
+	standart: {
+		header: {text: {text: "Backpack"}},
+		inventory: {standart: true},
+		background: {standart: true}
+	},
+	
+	elements: {
+		"produce0": {type: "slot", x: 370, y: 50, size: 60},
+		"produce1": {type: "slot", x: 430, y: 50, size: 60},
+		"produce2": {type: "slot", x: 490, y: 50, size: 60},
+		"produce3": {type: "slot", x: 550, y: 50, size: 60},
+		"produce4": {type: "slot", x: 610, y: 50, size: 60},
+		"produce5": {type: "slot", x: 670, y: 50, size: 60},
+		"produce6": {type: "slot", x: 730, y: 50, size: 60},
+		"produce7": {type: "slot", x: 790, y: 50, size: 60},
+		"produce8": {type: "slot", x: 850, y: 50, size: 60},
+
+		"produce9": {type: "slot", x: 370, y: 110, size: 60},
+		"produce10": {type: "slot", x: 430, y: 110, size: 60},
+		"produce12": {type: "slot", x: 490, y: 110, size: 60},
+		"produce13": {type: "slot", x: 550, y: 110, size: 60},
+		"produce14": {type: "slot", x: 610, y: 110, size: 60},
+		"produce15": {type: "slot", x: 670, y: 110, size: 60},
+		"produce16": {type: "slot", x: 730, y: 110, size: 60},
+		"produce17": {type: "slot", x: 790, y: 110, size: 60},
+		"produce18": {type: "slot", x: 850, y: 110, size: 60},
+
+		"produce19": {type: "slot", x: 370, y: 170, size: 60},
+		"produce20": {type: "slot", x: 430, y: 170, size: 60},
+		"produce21": {type: "slot", x: 490, y: 170, size: 60},
+		"produce22": {type: "slot", x: 550, y: 170, size: 60},
+		"produce23": {type: "slot", x: 610, y: 170, size: 60},
+		"produce24": {type: "slot", x: 670, y: 170, size: 60},
+		"produce25": {type: "slot", x: 730, y: 170, size: 60},
+		"produce26": {type: "slot", x: 790, y: 170, size: 60},
+		"produce27": {type: "slot", x: 850, y: 170, size: 60}
+	}
+});
+
+Callback.addCallback("ItemUse", function (coords, item, block) {
+	if(item.id == ItemID.backpack) backpackContainer.openAs(guiBackpack);
+});
+
+
+
 
 IDRegistry.genItemID("bigBackpack"); //54 slots
-Item.createItem("bigBackpack", "Big Backpack", { name: "backpack_big", data: 0 },{ stack: 64 });
+Item.createItem("bigBackpack", "Big Backpack", { name: "backpack_big", data: 0 },{ stack: 1 });
+
+var bigBackpackContainer = new UI.Container();
+var guiBigBackpack = new UI.StandartWindow({
+	standart: {
+		header: {text: {text: "Big Backpack"}},
+		inventory: {standart: true},
+		background: {standart: true}
+	},
+	
+	elements: {
+		"produce0": {type: "slot", x: 370, y: 50, size: 60},
+		"produce1": {type: "slot", x: 430, y: 50, size: 60},
+		"produce2": {type: "slot", x: 490, y: 50, size: 60},
+		"produce3": {type: "slot", x: 550, y: 50, size: 60},
+		"produce4": {type: "slot", x: 610, y: 50, size: 60},
+		"produce5": {type: "slot", x: 670, y: 50, size: 60},
+		"produce6": {type: "slot", x: 730, y: 50, size: 60},
+		"produce7": {type: "slot", x: 790, y: 50, size: 60},
+		"produce8": {type: "slot", x: 850, y: 50, size: 60},
+
+		"produce9": {type: "slot", x: 370, y: 110, size: 60},
+		"produce10": {type: "slot", x: 430, y: 110, size: 60},
+		"produce12": {type: "slot", x: 490, y: 110, size: 60},
+		"produce13": {type: "slot", x: 550, y: 110, size: 60},
+		"produce14": {type: "slot", x: 610, y: 110, size: 60},
+		"produce15": {type: "slot", x: 670, y: 110, size: 60},
+		"produce16": {type: "slot", x: 730, y: 110, size: 60},
+		"produce17": {type: "slot", x: 790, y: 110, size: 60},
+		"produce18": {type: "slot", x: 850, y: 110, size: 60},
+
+		"produce19": {type: "slot", x: 370, y: 170, size: 60},
+		"produce20": {type: "slot", x: 430, y: 170, size: 60},
+		"produce21": {type: "slot", x: 490, y: 170, size: 60},
+		"produce22": {type: "slot", x: 550, y: 170, size: 60},
+		"produce23": {type: "slot", x: 610, y: 170, size: 60},
+		"produce24": {type: "slot", x: 670, y: 170, size: 60},
+		"produce25": {type: "slot", x: 730, y: 170, size: 60},
+		"produce26": {type: "slot", x: 790, y: 170, size: 60},
+		"produce27": {type: "slot", x: 850, y: 170, size: 60},
+	
+	"produce28": {type: "slot", x: 370, y: 230, size: 60},
+		"produce29": {type: "slot", x: 430, y: 230, size: 60},
+		"produce30": {type: "slot", x: 490, y: 230, size: 60},
+		"produce31": {type: "slot", x: 550, y: 230, size: 60},
+		"produce32": {type: "slot", x: 610, y: 230, size: 60},
+		"produce33": {type: "slot", x: 670, y: 230, size: 60},
+		"produce34": {type: "slot", x: 730, y: 230, size: 60},
+		"produce35": {type: "slot", x: 790, y: 230, size: 60},
+		"produce36": {type: "slot", x: 850, y: 230, size: 60},
+
+		"produce37": {type: "slot", x: 370, y: 290, size: 60},
+		"produce38": {type: "slot", x: 430, y: 290, size: 60},
+		"produce39": {type: "slot", x: 490, y: 290, size: 60},
+		"produce40": {type: "slot", x: 550, y: 290, size: 60},
+		"produce41": {type: "slot", x: 610, y: 290, size: 60},
+		"produce42": {type: "slot", x: 670, y: 290, size: 60},
+		"produce43": {type: "slot", x: 730, y: 290, size: 60},
+		"produce44": {type: "slot", x: 790, y: 290, size: 60},
+		"produce45": {type: "slot", x: 850, y: 290, size: 60},
+
+		"produce46": {type: "slot", x: 370, y: 350, size: 60},
+		"produce47": {type: "slot", x: 430, y: 350, size: 60},
+		"produce48": {type: "slot", x: 490, y: 350, size: 60},
+		"produce49": {type: "slot", x: 550, y: 350, size: 60},
+		"produce50": {type: "slot", x: 610, y: 350, size: 60},
+		"produce51": {type: "slot", x: 670, y: 350, size: 60},
+		"produce52": {type: "slot", x: 730, y: 350, size: 60},
+		"produce53": {type: "slot", x: 790, y: 350, size: 60},
+		"produce54": {type: "slot", x: 850, y: 350, size: 60}
+			}
+});
+
+Callback.addCallback("ItemUse", function (coords, item, block) {
+	if(item.id == ItemID.bigBackpack) bigBackpackContainer.openAs(guiBigBackpack);
+});
+
 
 
 
@@ -669,6 +793,34 @@ Callback.addCallback("PostLoaded", function(){
 	Recipes.addShaped({id: ItemID.backpack, count: 1, data: 0}, ["ooo","o o","ooo"], ['o', 334, 0]);
 	Recipes.addShaped({id: ItemID.bigBackpack, count: 1, data: 0}, ["ooo","o o","ooo"], ['o', ItemID.leatherTanned, 0]);
 });
+
+
+
+
+// file: stick.js
+
+var stickContainer = new UI.Container();
+var guiStick = new UI.StandartWindow({
+	standart: {
+		header: {text: {text: "Extra UI"}},
+		inventory: {standart: true},
+		background: {standart: true}
+	},
+	
+	drawing: [
+		{type: "bitmap", x: 450, y: 50, bitmap: "steve_ui", scale: 1.4}
+	],
+	
+	elements: {
+		"slotBack": {type: "slot", x: 735, y: 150, size: 80},
+	}
+});
+
+
+Callback.addCallback("ItemUse", function (coords, item, block) {
+	if(item.id == 280) stickContainer.openAs(guiStick);
+});
+
 
 
 
@@ -1113,39 +1265,63 @@ Callback.addCallback("PreLoaded", function(){
 
 // file: block/fluid.js
 
+var Renderer={
+        setOilRender:function(id,x){
+        var shape = new ICRender.CollisionShape();     
+        BlockRenderer.setCustomCollisionShape(Block.getNumericId(id), -1, shape);    
+        BlockRenderer.addRenderCallback(id, function(api, coords,block) {
+            if(x != 0){
+                for(var i = 0; i < 1/x; i += x){
+                api.renderBoxId(coords.x, coords.y, coords.z,0, 0, 0, 1, 14/16, 1,id, block.data);
+                }
+            }
+            else{
+                api.renderBoxId(coords.x, coords.y, coords.z, 0, 0, 0, 1, 14/16, 1,id, block.data);
+            }
+        })
+        BlockRenderer.enableCustomRender(id);
+    }
+};
+
 var BLOCK_TYPE_LIQUID = Block.createSpecialType({
     //base: 90,
     rendertype: 0,
-    renderlayer: 1,
+    renderlayer: 3,
     explosionres: 9999
 });
 
 IDRegistry.genBlockID("oil"); 
 Block.createBlock("oil", [
-	{name: "Oil", texture: [["oil_still", 0]], inCreative: true}
+	{name: "Oil", texture: [["oil_still", 0]], inCreative:false}
 , BLOCK_TYPE_LIQUID]);
 
 Block.setBlockShape(BlockID.oil, {x: 0, y: 0, z: 0}, {x: 1, y: 14/16, z: 1});
+Renderer.setOilRender(BlockID.oil, 0);
+
 
 IDRegistry.genItemID("oilBucket");
 Item.createItem("oilBucket", "Oil Bucket", { name: "bucket_oil", data: 0 },{ stack: 1 });
 
-
-
-
-IDRegistry.genBlockID("fluidStill"); 
-Block.createBlock("fluidStill", [
-	{name: "block.fluid.name", texture: [["fluid_still", 0]], inCreative: true}
-, BLOCK_TYPE_LIQUID]);
-
-Block.setBlockShape(BlockID.fluidStill, {x: 0, y: 0, z: 0}, {x: 1, y: 14/16, z: 1});
+Callback.addCallback("ItemUse", function (coords, item, block) {
+	if(block.id == BlockID.oil && item.id == 325){
+		World.setBlock(coords.x, coords.y, coords.z, 0, 0);
+		Player.setCarriedItem(325, -1, 0);
+		Player.addItemToInventory(ItemID.oilBucket, 1, 0);
+	}
+	
+	if(item.id == ItemID.oilBucket && block.id != BlockID.oil){
+		World.setBlock(coords.x, coords.y + 1, coords.z, BlockID.oil, 0);
+		Player.setCarriedItem(ItemID.oilBucket, -1, 0);
+		Player.addItemToInventory(325, 1, 0);
+	}
+});
 
 
 
 
 // file: block/iron_coffer.js
 
-﻿IDRegistry.genBlockID("ironCoffer"); 
+IDRegistry.genBlockID("ironCoffer"); 
 Block.createBlock("ironCoffer", [
 	{name: "Iron Coffer", texture: [["iron_coffer", 0]], inCreative: true}
 , "opaque"]);
@@ -1190,7 +1366,37 @@ var guiIronCoffer = new UI.StandartWindow({
 		"produce24": {type: "slot", x: 670, y: 170, size: 60},
 		"produce25": {type: "slot", x: 730, y: 170, size: 60},
 		"produce26": {type: "slot", x: 790, y: 170, size: 60},
-		"produce27": {type: "slot", x: 850, y: 170, size: 60}
+		"produce27": {type: "slot", x: 850, y: 170, size: 60},
+	
+	"produce28": {type: "slot", x: 370, y: 230, size: 60},
+		"produce29": {type: "slot", x: 430, y: 230, size: 60},
+		"produce30": {type: "slot", x: 490, y: 230, size: 60},
+		"produce31": {type: "slot", x: 550, y: 230, size: 60},
+		"produce32": {type: "slot", x: 610, y: 230, size: 60},
+		"produce33": {type: "slot", x: 670, y: 230, size: 60},
+		"produce34": {type: "slot", x: 730, y: 230, size: 60},
+		"produce35": {type: "slot", x: 790, y: 230, size: 60},
+		"produce36": {type: "slot", x: 850, y: 230, size: 60},
+
+		"produce37": {type: "slot", x: 370, y: 290, size: 60},
+		"produce38": {type: "slot", x: 430, y: 290, size: 60},
+		"produce39": {type: "slot", x: 490, y: 290, size: 60},
+		"produce40": {type: "slot", x: 550, y: 290, size: 60},
+		"produce41": {type: "slot", x: 610, y: 290, size: 60},
+		"produce42": {type: "slot", x: 670, y: 290, size: 60},
+		"produce43": {type: "slot", x: 730, y: 290, size: 60},
+		"produce44": {type: "slot", x: 790, y: 290, size: 60},
+		"produce45": {type: "slot", x: 850, y: 290, size: 60},
+
+		"produce46": {type: "slot", x: 370, y: 350, size: 60},
+		"produce47": {type: "slot", x: 430, y: 350, size: 60},
+		"produce48": {type: "slot", x: 490, y: 350, size: 60},
+		"produce49": {type: "slot", x: 550, y: 350, size: 60},
+		"produce50": {type: "slot", x: 610, y: 350, size: 60},
+		"produce51": {type: "slot", x: 670, y: 350, size: 60},
+		"produce52": {type: "slot", x: 730, y: 350, size: 60},
+		"produce53": {type: "slot", x: 790, y: 350, size: 60},
+		"produce54": {type: "slot", x: 850, y: 350, size: 60}
 	}
 });
 

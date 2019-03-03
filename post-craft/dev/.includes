@@ -4,6 +4,7 @@ core/api/define.js
 core/api/upgrade.js
 
 other/radWasteland.js
+other/stick.js
 
 items/energy/cable.js
 

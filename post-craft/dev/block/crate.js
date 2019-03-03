@@ -7,6 +7,7 @@ Translation.addTranslation("Wooden Crate", {ru: "Деревянный ящик"}
 Block.setDestroyTime(BlockID.crate, 2);
 ToolAPI.registerBlockMaterial(BlockID.crate, "wood");
 
+Recipes.addFurnaceFuel(BlockID.woodenCrate, 0, 280);
 
 
 var guiWoodenCrate = new UI.StandartWindow({

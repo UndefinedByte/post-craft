@@ -53,12 +53,12 @@ var guiGenerator = new UI.StandartWindow({
 	
 	drawing: [
 		{type: "bitmap", x: 540, y: 135, bitmap: "energy_bar_background", scale: GUI_SCALE},
-		{type: "bitmap", x: 450, y: 150, bitmap: "fire_background", scale: GUI_SCALE},
+		{type: "bitmap", x: 445, y: 150, bitmap: "fire_background", scale: GUI_SCALE},
 	],
 	
 	elements: {
 		"energyScale": {type: "scale", x: 540 + GUI_SCALE * 4, y: 145, direction: 0, value: 0.5, bitmap: "energy_bar_scale", scale: GUI_SCALE},
-		"burningScale": {type: "scale", x: 450, y: 150, direction: 1, value: 0.5, bitmap: "fire_scale", scale: GUI_SCALE},
+		"burningScale": {type: "scale", x: 445, y: 150, direction: 1, value: 0.5, bitmap: "fire_scale", scale: GUI_SCALE},
 		"slotEnergy": {type: "slot", x: 440, y: 75, isValid: function(id){return ChargeItemRegistry.isValidItem(id, "Eu", 0);}},
 		"slotFuel": {type: "slot", x: 440, y: 210},
 		"textInfo1": {type: "text", x: 565, y: 195, width: 300, height: 30, text: "0/10000"}

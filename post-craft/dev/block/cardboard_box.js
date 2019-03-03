@@ -8,8 +8,7 @@ Block.createBlock("cardboardBox", [
 	{name: "Cardboard Box", texture: [["cardboard_box", 0], ["cardboard_box", 1], ["cardboard_box_sides", 1], ["cardboard_box_sides", 1], ["cardboard_box_sides", 0], ["cardboard_box_sides", 0]], inCreative: true}
 , BLOCK_TYPE_PAPER]);
 
-
-Translation.addTranslation("Cardboard Box", {ru: "Картонная коробка"});
+Recipes.addFurnaceFuel(BlockID.cardboardBox, 0, 160);
 Block.setDestroyTime(BlockID.cardboardBox, 0);
 ToolAPI.registerBlockMaterial(BlockID.cardboardBox, "wood");
 
