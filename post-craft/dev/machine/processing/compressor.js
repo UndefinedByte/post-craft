@@ -50,12 +50,12 @@ var guiCompressor = new UI.StandartWindow({
 	
 	drawing: [
 		{type: "bitmap", x: 530, y: 170, bitmap: "compressor_bar_background", scale: GUI_SCALE},
-		{type: "bitmap", x: 545, y: 172, bitmap: "fire_background", scale: GUI_SCALE}
+		{type: "bitmap", x: 547, y: 172, bitmap: "fire_background", scale: GUI_SCALE}
 		],
 	
 	elements: {
 		"progressScale": {type: "scale", x: 530, y: 170, direction: 0, value: 0, bitmap: "compressor_bar_scale", scale: GUI_SCALE},
-		"burningScale": {type: "scale", x: 545, y: 172, direction: 1, bitmap: "fire_scale", scale: GUI_SCALE},
+		"burningScale": {type: "scale", x: 547, y: 172, direction: 1, bitmap: "fire_scale", scale: GUI_SCALE},
 		"slotSource": {type: "slot", x: 445, y: 210},
 		"slotEnergy": {type: "slot", x: 535, y: 105, isValid: Machine.isValidEUStorage},
 		"slotResult": {type: "slot", x: 735, y: 210},
