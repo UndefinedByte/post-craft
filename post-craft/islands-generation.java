@@ -108,3 +108,4 @@ private static boolean canGenerateHere(World world, int chunkX, int chunkZ) {
         }
 
     }
+}
