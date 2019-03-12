@@ -11,7 +11,35 @@ public class MyGenerator implements IWorldGenerator {
 
 //GameRegistry.registerWorldGenerator(new MyGenerator(), 0); в PreInit
 
-@Override
+private static boolean canGenerateHere(World world, int chunkX, int chunkZ) {
+        int i = chunkX;
+        int j = chunkZ;
+
+        if (chunkX < 0) {
+            i = chunkX - 9;
+        }
+
+        if (chunkZ < 0) {
+            j = chunkZ - 9;
+        }
+
+        i /= 15;
+        j /= 15;
+        i *= 15;
+        j *= 15;
+
+        Random random = new Random((long)i * 341873128712L + (long)j * 132897987541L + world.getWorldInfo().getSeed() + (long)27644437);
+        i += random.nextInt(5);
+        j += random.nextInt(5);
+
+        if( i == chunkX && j == chunkZ ){
+            return true;
+        }
+
+        return false;
+    }
+    
+    @Override
     public void generate(Random rnd, int chunkX, int chunkZ, World world, IChunkGenerator iChunkGenerator, IChunkProvider iChunkProvider) {
         //корды центрального чанка острова
         int cchunkX = 0;
@@ -57,7 +85,7 @@ public class MyGenerator implements IWorldGenerator {
                 double l = Math.sqrt(i*i+j*j);
 
                 int hT = (int)( perlin.getValue((x+i)/40., (z+j)/40.)*2 - (i*i+j*j)/(10.*r) );//верхний шум
-                int hB = (int)( ( perlin.getValue((x+i), (z+j))-1 )*( ((r-l)/(double)r)*10>0?((r-l)/r)*10:0 ) );
+                int hB = (int)( perlin.getValue((x + i) / 50., (z + j) / 50.) * ((r - l) / 5. + 7) + ( perlin.getValue((x + i), (z + j)) - 1) * (((r - l)/(double)r)*10>0?((r-l)/r)*10:0));
 
                 hB += (int)l-r;
 
@@ -80,56 +108,3 @@ public class MyGenerator implements IWorldGenerator {
         }
 
     }
-private static boolean canGenerateHere(World world, int chunkX, int chunkZ) {
-        int i = chunkX;
-        int j = chunkZ;
-
-        if (chunkX < 0) {
-            i = chunkX - 9;
-        }
-
-        if (chunkZ < 0) {
-            j = chunkZ - 9;
-        }
-
-        i /= 15;
-        j /= 15;
-        i *= 15;
-        j *= 15;
-
-        Random random = new Random((long)i * 341873128712L + (long)j * 132897987541L + world.getWorldInfo().getSeed() + (long)27644437);
-        i += random.nextInt(5);
-        j += random.nextInt(5);
-
-        if( i == chunkX && j == chunkZ ){
-            return true;
-        }
-
-        return false;
-    }
-
-
-       for(int i = -r;  i <= r; i++) {
-            for(int j = -r; j <= r; j++) {
-                int hT = (int)(perlin.getValue((x+i)/20., (z+j)/20.)*2 + r*(1.-(i*i+j*j)/(r*r))/10.);//верхний шум
-                int hB = (int)( perlin.getValue((x+i)/50., (z+j)/50.)*((r-l)/5.+7) + ( perlin.getValue((x+i), (z+j))-1 )*( ((r-l)/(double)r)*10>0?((r-l)/r)*10:0));//нижний шум можно не растягивать, но стоит увеличить котраст
-                hB += Math.sqrt(i*i+j*j)-r;//собсна добавляем ту самую третью ф-ю к нашему нижнему шуму
-
-                for(int k = hB; k <= hT; k++) {
-
-                    BlockPos pos = new BlockPos(x+i, y+k, z+j);
-
-                    IBlockState block;
-
-                    if(k == hT) {
-                        block = Blocks.GRASS.getDefaultState();
-                    }else if(k > hT-4) {
-                        block = Blocks.DIRT.getDefaultState();
-                    }else {
-                        block = Blocks.STONE.getDefaultState();
-                    }
-                    world.setBlockState(pos, block);
-                }
-            }
-        }
-
