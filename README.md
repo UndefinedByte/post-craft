@@ -1,3 +1,3 @@
 # post-craft
 
-Good modification for Minecraft engine Inner Core. in past.
+Minecraft modification for Inner Core
